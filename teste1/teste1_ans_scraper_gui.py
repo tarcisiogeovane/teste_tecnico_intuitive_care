@@ -1,6 +1,7 @@
 import requests # requests para realizar o acesso web
 from bs4 import BeautifulSoup # BeautifulSoup para "parsing" HTML, encontrar os links dos PDFs 
-import os #vamos usar o módulo 'os' para obter o caminho absoluto do diretório desejado
+import os # Vamos usar o módulo 'os' para obter o caminho absoluto do diretório desejado
+import sys # Sys para acessar informações sobre o ambiente de execução
 from zipfile import ZipFile # ZipFile para compactação
 import tkinter as tk
 from tkinter import messagebox, ttk
@@ -32,8 +33,11 @@ class ANSScraperApp:
         self.exit_button = ttk.Button(root, text="Sair", command=root.quit)
         self.exit_button.pack(pady=10)
 
-        # Define o diretório do script como base
-        self.base_dir = os.path.dirname(os.path.abspath(__file__))
+        # Define o diretório base como a pasta onde o .exe está
+        if getattr(sys, 'frozen', False):  # QUando for usado o executável
+            self.base_dir = os.path.dirname(sys.executable)
+        else:  # Qaudno for usado o script .py
+            self.base_dir = os.path.dirname(os.path.abspath(__file__))
 
     def log(self, message):
         self.status_text.insert(tk.END, message + "\n")
