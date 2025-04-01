@@ -1,5 +1,5 @@
 import pdfplumber # Para extrair tabelas de PDFs
-import pandas as pd
+import pandas as pd # Para manipular os dados
 import os
 from zipfile import ZipFile
 
