@@ -5,8 +5,8 @@ from zipfile import ZipFile
 
 def extract_and_transform_data(pdf_path, output_csv, output_zip, user_name):
     try:
-        # 2.1 Extração dos dados do PDF (todas as páginas)
-        print(f"Extraindo dados do PDF: {pdf_path}")
+        # Extração dos dados do PDF (todas as páginas)
+        print(f"Extraindo dados do PDF: {"C:/Users/tarci/OneDrive/Desktop/teste_tecnico_intuitive_care/Anexo_I_Rol_2021RN_465.2021_RN627L.2024.pdf"}")
         all_tables = []
         with pdfplumber.open(pdf_path) as pdf:
             for page in pdf.pages:
@@ -30,7 +30,7 @@ def extract_and_transform_data(pdf_path, output_csv, output_zip, user_name):
 
         df = pd.DataFrame(data_rows, columns=headers)
         
-        # 2.4 Substitui abreviações OD e AMB pelas descrições completas
+        # Substitui abreviações OD e AMB pelas descrições completas
         # Conforme legenda comum em rodapés: OD = Odontológico, AMB = Ambulatorial
         column_mapping = {
             'OD': 'Odontológico',
@@ -38,12 +38,12 @@ def extract_and_transform_data(pdf_path, output_csv, output_zip, user_name):
         }
         df.rename(columns=column_mapping, inplace=True)
 
-        # 2.2 Salva os dados em CSV
+        # Salva os dados em CSV
         print(f"Salvando dados em: {output_csv}")
         df.to_csv(output_csv, index=False, encoding='utf-8-sig')  # utf-8-sig para suportar acentos no Windows
 
-        # 2.3 Compacta o CSV em um ZIP
-        zip_filename = output_zip.format(user_name=user_name)
+        # Compacta o CSV em um ZIP
+        zip_filename = output_zip_template.format(user_name)
         print(f"Compactando em: {zip_filename}")
         with ZipFile(zip_filename, 'w') as zipf:
             zipf.write(output_csv, os.path.basename(output_csv))
@@ -57,13 +57,13 @@ def extract_and_transform_data(pdf_path, output_csv, output_zip, user_name):
 
 if __name__ == "__main__":
     # Configurações
-    pdf_path = "anexos_rol_procedimentos/Anexo_I_Rol_2021RN_465.2021_RN_470_RN_480_RN_513_RN_536_RN_537.pdf"  # Ajuste o nome do PDF conforme gerado no Teste 1
+    pdf_path = "C:/Users/tarci/OneDrive/Desktop/teste_tecnico_intuitive_care/Anexo_I_Rol_2021RN_465.2021_RN627L.2024.pdf"  # Ajuste o nome do PDF conforme gerado no Teste 1
     output_csv = "rol_procedimentos.csv"
-    output_zip = "Teste_{}.zip"
-    user_name = "Tarcila"  # Substitua pelo seu nome
+    output_zip_template = "Teste_{}.zip"
+    user_name = "Tarcisio" # Substitua pelo nome do usuário
 
     # Verifica se o PDF existe
     if not os.path.exists(pdf_path):
         print(f"Erro: O arquivo {pdf_path} não foi encontrado. Certifique-se de que o Teste 1 foi executado.")
     else:
-        extract_and_transform_data(pdf_path, output_csv, output_zip, user_name)
+        extract_and_transform_data(pdf_path, output_csv, output_zip_template, user_name)
