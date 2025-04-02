@@ -1,4 +1,4 @@
-# Teste Técnico Intuitive Care - Teste 2: Transformação de Dados
+# Teste 2: Transformação de Dados
 
 Este projeto contém a solução para o **Teste 2** do teste técnico da Intuitive Care. O programa extrai dados da tabela "Rol de Procedimentos e Eventos em Saúde" do PDF do Anexo I, transforma-os em uma tabela estruturada em formato CSV, substitui abreviações (OD e AMB) por descrições completas e compacta o resultado em um arquivo ZIP.
 
@@ -29,8 +29,8 @@ Se você quer apenas usar o programa sem mexer no código, siga estas instruçõ
    - Acompanhe o progresso na área de status. Quando terminar, um pop-up confirmará o sucesso.
 
 4. **Resultado:**
-   - O arquivo `Teste_[Seu_Nome].zip` (ex.: `Teste_Tarcila.zip`) será criado na mesma pasta do `.exe`.
-
+   - O arquivo `Teste_[Seu_Nome].zip` (ex.: `Teste_Tarcisio.zip`) será criado na mesma pasta do `.exe`.
+--------------------------------------------------------------------------------------------------------------
 ### Para Desenvolvedores
 Se você quer rodar ou modificar o código-fonte, siga estas instruções:
 
