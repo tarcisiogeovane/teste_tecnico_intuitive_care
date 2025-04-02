@@ -1,6 +1,7 @@
 import pdfplumber # Para extrair tabelas de PDFs
 import pandas as pd # Para manipular os dados
 import os
+import sys
 from zipfile import ZipFile
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
@@ -14,6 +15,12 @@ class DataTransformApp:
         self.root.title("Transformação de Dados - Teste 2")
         self.root.geometry("500x400")
         self.root.resizable(False, False)
+
+        # Define o diretório base, a pasta do executável .exe ou do script .py)
+        if getattr(sys, 'frozen', False):  # Se for um executável
+            self.base_dir = os.path.dirname(sys.executable)
+        else:  # Se for um script .py
+            self.base_dir = os.path.dirname(os.path.abspath(__file__))
 
         # Estilo da janela
         self.root.configure(bg="#f0f0f0")
@@ -83,7 +90,7 @@ class DataTransformApp:
         # Extrai dados do PDF, transforma e salva em CSV/ZIP 
         try:
             pdf_path = self.pdf_path.get()  # Obtém o caminho do PDF do campo de entrada
-            output_csv = "rol_procedimentos.csv"
+            output_csv = os.path.join(self.base_dir, "rol_procedimentos.csv")  # Salva no diretório base
             output_zip_template = "Teste_{}.zip"
             user_name = self.user_name.get()  # Obtém o nome do usuário do campo de entrada
 
@@ -124,7 +131,7 @@ class DataTransformApp:
             df.to_csv(output_csv, index=False, encoding='utf-8-sig')  # utf-8-sig para suportar acentos no Windows
 
             # Compacta o CSV em um ZIP
-            zip_filename = output_zip_template.format(user_name)
+            zip_filename = os.path.join(self.base_dir, output_zip_template.format(user_name))
             self.log(f"Compactando em: {zip_filename}")
             with ZipFile(zip_filename, 'w') as zipf:
                 zipf.write(output_csv, os.path.basename(output_csv))
