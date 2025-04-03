@@ -12,3 +12,4 @@ FIELDS TERMINATED BY ';' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (registro_ans, cnpj, razao_social, nome_fantasia, modalidade, logradouro, numero, complemento, bairro, cep, uf);
+
