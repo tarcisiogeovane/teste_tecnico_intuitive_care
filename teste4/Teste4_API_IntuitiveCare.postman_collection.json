@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "a1eab77d-0c8a-4a1c-9c13-b8d16cd18c88",
+		"name": "Teste 4 - API Intuitive Care",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39228038"
+	},
+	"item": [
+		{
+			"name": "Get Top 10 Despesas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/top_despesas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"top_despesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Todas Operadoras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/search_operadoras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"search_operadoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca por BRADESCO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/search_operadoras?q=BRADESCO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"search_operadoras"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "BRADESCO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca por UNIMED",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/search_operadoras?q=UNIMED",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"search_operadoras"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "UNIMED"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
