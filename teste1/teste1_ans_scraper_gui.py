@@ -2,7 +2,7 @@ import requests # requests para realizar o acesso web
 from bs4 import BeautifulSoup # BeautifulSoup para "parsing" HTML, encontrar os links dos PDFs 
 import os # Vamos usar o módulo 'os' para obter o caminho absoluto do diretório desejado
 import sys # Sys para acessar informações sobre o ambiente de execução
-from zipfile import ZipFile # ZipFile para compactação
+from zipfile import ZipFile # ZipFile para compactação (pode usar qualquer um que conheça também)
 import tkinter as tk
 from tkinter import messagebox, ttk
 import threading
